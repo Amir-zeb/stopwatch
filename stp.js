@@ -31,23 +31,23 @@ function pause(){
     clearInterval(interval);
 }
 
-function ready(){
-    if($('#stpbutton').children('span').hasClass('start')){
-        interval=setInterval(timer,10);
-        $('#stpbutton').children('span').removeClass('start');
-        $('#stpbutton').children('span').addClass('pause');
-        }
-        else if($('#stpbutton').children('span').hasClass('pause')){
-        clearInterval(interval);
-        $('#stpbutton').children('span').removeClass('pause');
-        $('#stpbutton').children('span').addClass('start');
-        }
+function startPause(){
+    var currentvalue = document.getElementById('startPause');
+    if(currentvalue.innerHTML == "Start"){
+        currentvalue.innerHTML="Pause";
+        start();
+        document.getElementById('save').disabled=true;
+    }else if(currentvalue.innerHTML == "Pause"){
+        currentvalue.innerHTML="Start";
+        pause();
+        document.getElementById('save').disabled=false;
+    }
 }
 
 function reset(){
-    var min=0;
-    var sec=0;
-    var msec=0;
+    min=0;
+    sec=0;
+    msec=0;
 
     minheading.innerHTML=min;
     secheading.innerHTML=sec;
@@ -55,22 +55,66 @@ function reset(){
     pause();
 }
 
+function save(){
+
+    var savet=min+":"+sec+":"+msec;
+    var minutes=document.getElementById("savetime");
+    minutes.innerHTML=savet;
+}
 
 
-{/* <script>
-        $(document).ready(function(){
-            $("#mycarousel").carousel( { interval: 2000 } );
-            $("#carouselButton").click(function(){
-                if($('#carouselButton').children('span').hasClass('fa-pause')){
-                $("#mycarousel").carousel('pause');
-                $('#carouselButton').children('span').removeClass('fa-pause');
-                $('#carouselButton').children('span').addClass('fa-play');
-                }
-                else if($('#carouselButton').children('span').hasClass('fa-play')){
-                $("#mycarousel").carousel('cycle');
-                $('#carouselButton').children('span').removeClass('fa-play');
-                $('#carouselButton').children('span').addClass('fa-pause');
-                }
-            });
-        });
-    </script> */}
+
+
+
+
+
+
+// var myNodelist = document.getElementsByTagName("LI");
+// var i;
+// for (i = 0; i < myNodelist.length; i++) {
+//   var span = document.createElement("SPAN");
+//   var txt = document.createTextNode("\u00D7");
+//   span.className = "close";
+//   span.appendChild(txt);
+//   myNodelist[i].appendChild(span);
+// }
+
+// // Click on a close button to hide the current list item
+// var close = document.getElementsByClassName("close");
+// var i;
+// for (i = 0; i < close.length; i++) {
+//   close[i].onclick = function() {
+//     var div = this.parentElement;
+//     div.style.display = "none";
+//   }
+// }
+
+// // Add a "checked" symbol when clicking on a list item
+// var list = document.querySelector('ul');
+// list.addEventListener('click', function(ev) {
+//   if (ev.target.tagName === 'LI') {
+//     ev.target.classList.toggle('checked');
+//   }
+// }, false);
+
+// // Create a new list item when clicking on the "Add" button
+// function newElement() {
+//   var li = document.createElement("li");
+//   var inputValue = document.write(min+" : "+sec+" : "+msec);
+//   var t = document.createTextNode(inputValue);
+//   li.appendChild(t);
+//   document.getElementById("myUL").appendChild(li)
+
+//   var span = document.createElement("SPAN");
+//   var txt = document.createTextNode("\u00D7");
+//   span.className = "close";
+//   span.appendChild(txt);
+//   li.appendChild(span);
+
+//   for (i = 0; i < close.length; i++) {
+//     close[i].onclick = function() {
+//       var div = this.parentElement;
+//       div.style.display = "none";
+//     }
+//   }
+// }
