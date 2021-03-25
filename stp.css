@@ -6,7 +6,9 @@
     background-color: #2196F3;
     padding: 10px;
   }
-  
+  body{
+    background-color: #2196F3;
+  }
   .grid-container > div {
     background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
@@ -17,4 +19,10 @@
   .btn-col{
       grid-column:1/4;
       width: 100% !important;
+  }
+
+  .closeIcon{
+    float: right;
+    opacity: 0.8;
+    padding-top: 10px;
   }

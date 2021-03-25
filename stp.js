@@ -1,67 +1,80 @@
-var min=0;
-var sec=0;
-var msec=0;
+var min = 0;
+var sec = 0;
+var msec = 0;
 
-var minheading=document.getElementById("min");
-var secheading=document.getElementById("sec");
-var msecheading=document.getElementById("msec");
+var minheading = document.getElementById("min");
+var secheading = document.getElementById("sec");
+var msecheading = document.getElementById("msec");
 
 var interval;
 
-function timer(){
+function timer() {
     msec++;
-    msecheading.innerHTML=msec;
-    if(msec>=100){
+    msecheading.innerHTML = msec;
+    if (msec >= 100) {
         sec++;
-        secheading.innerHTML=sec;
-        msec=0;
+        secheading.innerHTML = sec;
+        msec = 0;
     }
-    else if(sec>=5){
+    else if (sec >= 60) {
         min++;
-        minheading.innerHTML=min;
-        sec=0;
+        minheading.innerHTML = min;
+        sec = 0;
     }
 }
 
-function start(){
-    interval=setInterval(timer,10)
+function start() {
+    interval = setInterval(timer, 10)
 }
 
-function pause(){
+function pause() {
     clearInterval(interval);
 }
 
-function startPause(){
+function startPause() {
     var currentvalue = document.getElementById('startPause');
-    if(currentvalue.innerHTML == "Start"){
-        currentvalue.innerHTML="Pause";
+    if (currentvalue.innerHTML == "Start") {
+        currentvalue.innerHTML = "Pause";
         start();
-        document.getElementById('save').disabled=true;
-    }else if(currentvalue.innerHTML == "Pause"){
-        currentvalue.innerHTML="Start";
+        document.getElementById('save').disabled = true;
+    } else if (currentvalue.innerHTML == "Pause") {
+        currentvalue.innerHTML = "Start";
         pause();
-        document.getElementById('save').disabled=false;
+        document.getElementById('save').disabled = false;
     }
 }
 
-function reset(){
-    min=0;
-    sec=0;
-    msec=0;
+function reset() {
+    min = 0;
+    sec = 0;
+    msec = 0;
 
-    minheading.innerHTML=min;
-    secheading.innerHTML=sec;
-    msecheading.innerHTML=msec;
+    minheading.innerHTML = min;
+    secheading.innerHTML = sec;
+    msecheading.innerHTML = msec;
     pause();
 }
 
-function save(){
+function save() {
 
-    var savet=min+":"+sec+":"+msec;
-    var minutes=document.getElementById("savetime");
-    minutes.innerHTML=savet;
+    var setlap = document.getElementById("savetime");
+    //Create a new list item when clicking on the "Add" button
+    var li = document.createElement("li");
+    //var inputValue = document.write(min + " : " + sec + " : " + msec);
+    var getlap = document.createTextNode(min + " : " + sec + " : " + msec);
+    var a = document.createElement("a")
+    a.setAttribute("type", "button")
+    a.setAttribute("class", "fas fa-times closeIcon")
+    a.setAttribute("onclick", 'removeLi(this)')
+    li.appendChild(getlap);
+    li.appendChild(a)
+    setlap.appendChild(li)
 }
 
+const removeLi = (e) => {
+    var node = e.parentElement.remove()
+    return node
+}
 
 
 
