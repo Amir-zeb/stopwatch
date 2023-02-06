@@ -1,3 +1,3 @@
 # StopWatch
 
-Link : https://amir-zeb.github.io/StopWatch/
+Link : https://amir-zeb.github.io/stopwatch
